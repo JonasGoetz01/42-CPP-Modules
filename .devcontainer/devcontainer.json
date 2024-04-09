@@ -3,7 +3,7 @@
 {
 	"name": "C-Codespace",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "jonasgoetz01/codespaces-c:latest",
+	"dockerFile": "Dockerfile",
 
 	"mounts": [
 		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
@@ -14,6 +14,8 @@
 				"ms-vscode.cpptools",
 				"ms-vscode.cpptools-extension-pack",
 				"vadimcn.vscode-lldb",
+				"GitHub.copilot",
+				"GitHub.copilot-chat"
 			]
 		}
 	}

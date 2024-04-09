@@ -1,5 +1,5 @@
 C++ = c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS = -Wall -Werror -Wextra -std=c++988
 NAME = convert
 
 GREEN=\033[32m

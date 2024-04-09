@@ -1,6 +1,6 @@
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=CC98
-NAME = harl_filter
+CFLAGS = -Wall -Werror -Wextra -std=c++98
+NAME = harlFilter
 
 SOURCES = main.cpp \
 		  Harl.cpp

@@ -1,5 +1,5 @@
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -std=CC98
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 NAME = violence
 
 SOURCES = main.cpp \
