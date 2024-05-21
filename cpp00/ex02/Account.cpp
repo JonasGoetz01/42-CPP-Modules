@@ -55,3 +55,39 @@ bool Account::makeWithdrawal(int withdrawal)
 		+ withdrawal << ";withdrawal:" << withdrawal << ";amount:" << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 	return (true);
 }
+int Account::checkAmount(void) const
+{
+	return (_amount);
+}
+
+void Account::displayStatus(void) const
+{
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl;
+}
+
+void Account::displayAccountsInfos(void)
+{
+	_displayTimestamp();
+	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
+}
+
+int Account::getNbAccounts(void)
+{
+	return (_nbAccounts);
+}
+
+int Account::getTotalAmount(void)
+{
+	return (_totalAmount);
+}
+
+int Account::getNbDeposits(void)
+{
+	return (_totalNbDeposits);
+}
+
+int Account::getNbWithdrawals(void)
+{
+	return (_totalNbWithdrawals);
+}
