@@ -25,3 +25,17 @@ class Contact
 	std::string phoneNumber;
 	std::string darkestSecret;
 };
+
+class PhoneBook
+{
+  public:
+	PhoneBook();
+	~PhoneBook();
+	void add();
+	void search();
+
+  private:
+	int contactCount;
+	int contactIndex;
+	Contact contacts[8];
+};
