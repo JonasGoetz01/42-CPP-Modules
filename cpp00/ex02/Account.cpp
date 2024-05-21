@@ -29,3 +29,13 @@ Account::~Account(void)
 	_nbAccounts--;
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
+void Account::makeDeposit(int deposit)
+{
+	_displayTimestamp();
+	_amount += deposit;
+	_totalAmount += deposit;
+	_totalNbDeposits++;
+	_nbDeposits++;
+	std::cout << "index:" << _accountIndex << ";p_amount:" << _amount
+		- deposit << ";deposit:" << deposit << ";amount:" << _amount << ";nb_deposits:" << _nbDeposits << std::endl;
+}
