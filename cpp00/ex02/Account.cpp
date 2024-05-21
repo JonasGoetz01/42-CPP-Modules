@@ -91,3 +91,13 @@ int Account::getNbWithdrawals(void)
 {
 	return (_totalNbWithdrawals);
 }
+void Account::_displayTimestamp(void)
+{
+	time_t		t;
+	struct tm	*tm;
+
+	t = time(0);
+	tm = localtime(&t);
+	std::cout << "[" << tm->tm_year + 1900 << tm->tm_mon
+		+ 1 << tm->tm_mday << "_" << tm->tm_hour << tm->tm_min << tm->tm_sec << "] ";
+}
