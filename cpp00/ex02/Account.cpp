@@ -1,23 +1,18 @@
 #include "Account.hpp"
+#include <ctime>
 #include <iostream>
 
-Account::Account(void)
-{
-	_displayTimestamp();
-	_accountIndex = _nbAccounts++;
-	_totalAmount += _amount;
-	_totalNbDeposits++;
-	_nbDeposits++;
-	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
-}
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
-Account::Account(int initial_deposit) : _amount(initial_deposit)
+Account::Account(int initial_deposit) : _amount(initial_deposit),
+	_nbDeposits(0), _nbWithdrawals(0)
 {
 	_displayTimestamp();
 	_accountIndex = _nbAccounts++;
 	_totalAmount += _amount;
-	_totalNbDeposits++;
-	_nbDeposits++;
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
 }
 
@@ -25,7 +20,6 @@ Account::~Account(void)
 {
 	_displayTimestamp();
 	_totalAmount -= _amount;
-	_totalNbWithdrawals++;
 	_nbAccounts--;
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
@@ -104,4 +98,12 @@ void Account::_displayTimestamp(void)
 	tm = localtime(&t);
 	std::cout << "[" << tm->tm_year + 1900 << tm->tm_mon
 		+ 1 << tm->tm_mday << "_" << tm->tm_hour << tm->tm_min << tm->tm_sec << "] ";
+}
+
+Account::Account(void) : _amount(0), _nbDeposits(0), _nbWithdrawals(0)
+{
+	_displayTimestamp();
+	_accountIndex = _nbAccounts++;
+	_totalAmount += _amount;
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created" << std::endl;
 }
