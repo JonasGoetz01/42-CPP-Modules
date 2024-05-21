@@ -138,3 +138,29 @@ std::string Contact::getDarkestSecret()
 {
 	return (this->darkestSecret);
 }
+
+int	main(void)
+{
+	PhoneBook phoneBook;
+
+	while (1)
+	{
+		std::string command;
+
+		std::cout << "Enter a command: ";
+		std::getline(std::cin, command);
+		if (command == "ADD")
+		{
+			phoneBook.add();
+		}
+		else if (command == "SEARCH")
+		{
+			phoneBook.search();
+		}
+		else if (command == "EXIT")
+		{
+			break ;
+		}
+	}
+	return (0);
+}
