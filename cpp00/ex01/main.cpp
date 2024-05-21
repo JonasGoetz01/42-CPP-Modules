@@ -75,3 +75,16 @@ void PhoneBook::search()
 	std::cout << "Phone number: " << this->contacts[i].getPhoneNumber() << std::endl;
 	std::cout << "Darkest secret: " << this->contacts[i].getDarkestSecret() << std::endl;
 }
+
+Contact::Contact()
+{
+	this->firstName = "";
+	this->lastName = "";
+	this->nickname = "";
+	this->phoneNumber = "";
+	this->darkestSecret = "";
+}
+
+Contact::~Contact()
+{
+}
