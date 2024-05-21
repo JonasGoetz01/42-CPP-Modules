@@ -139,9 +139,18 @@ std::string Contact::getDarkestSecret()
 	return (this->darkestSecret);
 }
 
+void	quit(int)
+{
+	std::cout << std::endl;
+	exit(0);
+}
+
 int	main(void)
 {
 	PhoneBook phoneBook;
+
+	// exit the programm when ctl + d is pressed
+	signal(SIGINT, quit);
 
 	while (1)
 	{
@@ -152,6 +161,10 @@ int	main(void)
 		if (command == "ADD")
 		{
 			phoneBook.add();
+		}
+		else if (std::cin.eof())
+		{
+			break ;
 		}
 		else if (command == "SEARCH")
 		{
