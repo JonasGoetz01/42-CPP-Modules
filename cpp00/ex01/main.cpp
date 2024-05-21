@@ -39,3 +39,39 @@ void PhoneBook::add()
 		this->contactIndex = 0;
 	}
 }
+
+void PhoneBook::search()
+{
+	int	i;
+
+	if (this->contactCount == 0)
+	{
+		std::cout << "Phone book is empty." << std::endl;
+		return ;
+	}
+	std::cout << "     index|first name| last name|  nickname" << std::endl;
+	for (int i = 0; i < this->contactCount; i++)
+	{
+		std::cout << std::setw(10) << i + 1 << "|";
+		std::cout << std::setw(10) << this->contacts[i].getFirstName().substr(0,
+			10) << "|";
+		std::cout << std::setw(10) << this->contacts[i].getLastName().substr(0,
+			10) << "|";
+		std::cout << std::setw(10) << this->contacts[i].getNickname().substr(0,
+			10) << std::endl;
+	}
+	std::string index;
+	std::cout << "Enter an index: ";
+	std::getline(std::cin, index);
+	if (index.length() != 1 || index[0] < '1' || index[0] > '8')
+	{
+		std::cout << "Invalid index." << std::endl;
+		return ;
+	}
+	i = index[0] - '1';
+	std::cout << "First name: " << this->contacts[i].getFirstName() << std::endl;
+	std::cout << "Last name: " << this->contacts[i].getLastName() << std::endl;
+	std::cout << "Nickname: " << this->contacts[i].getNickname() << std::endl;
+	std::cout << "Phone number: " << this->contacts[i].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << this->contacts[i].getDarkestSecret() << std::endl;
+}
