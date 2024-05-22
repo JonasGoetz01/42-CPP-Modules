@@ -15,7 +15,7 @@ private:
     std::map<std::string, void (Harl::*)()> levels;
 
 public:
-    Harl(); // Constructor to initialize the 'levels' map
+    Harl();
     void complain(std::string level);
 };
 
