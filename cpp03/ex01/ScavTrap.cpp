@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:03:38 by jgotz             #+#    #+#             */
-/*   Updated: 2024/05/23 16:07:47 by jgotz            ###   ########.fr       */
+/*   Updated: 2024/05/23 18:00:53 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,3 @@ void ScavTrap::attack(const std::string& target)
     else
         std::cout << "ScavTrap " << this->name << " cannot attack!" << std::endl;
 }
-
-void ScavTrap::takeDamage(unsigned int amount)
-{
-    std::cout << "ScavTrap " << this->name << " takes " << amount << " points of damage!" << std::endl;
-    this->hit_points -= amount;
-}
-
-void ScavTrap::beRepaired(unsigned int amount)
-{
-    if(this->energy_points > 0 && this->hit_points > 0)
-    {
-        this->hit_points += amount;
-        std::cout << "ScavTrap " << this->name << " is repaired by " << amount << " points!" << std::endl;
-    }
-    else
-        std::cout << "ScavTrap " << this->name << " cannot be repaired!" << std::endl;
-}
-
