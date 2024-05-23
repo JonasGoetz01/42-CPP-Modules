@@ -6,20 +6,11 @@
 /*   By: jgotz <jgotz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:03:38 by jgotz             #+#    #+#             */
-/*   Updated: 2024/05/23 16:40:27 by jgotz            ###   ########.fr       */
+/*   Updated: 2024/05/23 18:07:44 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
-
-FragTrap::FragTrap(): ClapTrap("default_name")
-{
-    this->hit_points = 100;
-    this->energy_points = 100;
-    this->attack_damage = 30;
-    this->name = "frag_trap_default_name";
-    std::cout << "FragTrap " << this->name << " is created" << std::endl;
-}
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
@@ -49,21 +40,3 @@ void FragTrap::attack(const std::string& target)
     else
         std::cout << "FragTrap " << this->name << " cannot attack!" << std::endl;
 }
-
-void FragTrap::takeDamage(unsigned int amount)
-{
-    std::cout << "FragTrap " << this->name << " takes " << amount << " points of damage!" << std::endl;
-    this->hit_points -= amount;
-}
-
-void FragTrap::beRepaired(unsigned int amount)
-{
-    if(this->energy_points > 0 && this->hit_points > 0)
-    {
-        this->hit_points += amount;
-        std::cout << "FragTrap " << this->name << " is repaired by " << amount << " points!" << std::endl;
-    }
-    else
-        std::cout << "FragTrap " << this->name << " cannot be repaired!" << std::endl;
-}
-

@@ -6,20 +6,11 @@
 /*   By: jgotz <jgotz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:03:38 by jgotz             #+#    #+#             */
-/*   Updated: 2024/05/23 16:40:53 by jgotz            ###   ########.fr       */
+/*   Updated: 2024/05/23 18:00:53 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
-
-ScavTrap::ScavTrap(): ClapTrap("default_name")
-{
-    this->hit_points = 100;
-    this->energy_points = 50;
-    this->attack_damage = 20;
-    this->name = "scav_trap_default_name";
-    std::cout << "ScavTrap " << this->name << " is created" << std::endl;
-}
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
@@ -49,21 +40,3 @@ void ScavTrap::attack(const std::string& target)
     else
         std::cout << "ScavTrap " << this->name << " cannot attack!" << std::endl;
 }
-
-void ScavTrap::takeDamage(unsigned int amount)
-{
-    std::cout << "ScavTrap " << this->name << " takes " << amount << " points of damage!" << std::endl;
-    this->hit_points -= amount;
-}
-
-void ScavTrap::beRepaired(unsigned int amount)
-{
-    if(this->energy_points > 0 && this->hit_points > 0)
-    {
-        this->hit_points += amount;
-        std::cout << "ScavTrap " << this->name << " is repaired by " << amount << " points!" << std::endl;
-    }
-    else
-        std::cout << "ScavTrap " << this->name << " cannot be repaired!" << std::endl;
-}
-
