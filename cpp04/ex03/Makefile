@@ -6,7 +6,8 @@ SOURCES = main.cpp \
 		  Materia.cpp \
 		  Character.cpp \
 		  Ice.cpp \
-		  Cure.cpp
+		  Cure.cpp \
+		  MateriaSource.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
