@@ -1,40 +1,27 @@
 #include "Materia.hpp"
+#include "ICharacter.hpp"
 
-Materia::Materia()
-{
-}
+AMateria::AMateria() : _type("materia") {}
 
-Materia::Materia(const Materia& other)
-{
-    *this = other;
-}
+AMateria::AMateria(std::string const & type) : _type(type) {}
 
-Materia::~Materia()
-{
-}
+AMateria::AMateria(AMateria const & ref) : _type(ref._type) {}
 
-Materia& Materia::operator=(const Materia& other)
+AMateria & AMateria::operator=(const AMateria& ref)
 {
-    (void)other;
+    if (this != &ref)
+        _type = ref._type;
     return *this;
 }
 
-const std::string& Materia::getType() const
+AMateria::~AMateria() {}
+
+std::string const & AMateria::getType() const
 {
     return _type;
 }
 
-void Materia::use(ICharacter& target)
+void AMateria::use(ICharacter& target)
 {
-    std::cout << "Materia used on " << target.getName() << std::endl;
-}
-
-Materia::Materia(const std::string& type)
-{
-    _type = type;
-}
-
-AMateria* Materia::clone() const
-{
-    return new Materia(_type);
+    (void)target;
 }
