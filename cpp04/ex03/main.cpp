@@ -1,26 +1,26 @@
-#include "Cat.hpp"
-#include "Dog.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
 
 int main()
 {
-    {
-        const AAnimal* j = new Dog();
-        const AAnimal* i = new Cat();
-        i->makeSound();
-        j->makeSound();
-        delete j;
-        delete i;
-    }
-    {
-        // const AAnimal* meta = new AAnimal();
-        const AAnimal* j = new Dog();
-        const AAnimal* i = new Cat();
-        std::cout << j->getType() << " " << std::endl;
-        std::cout << i->getType() << " " << std::endl;
-        i->makeSound();
-        j->makeSound();
-        delete j;
-        delete i;
-    }
+    Ice* ice = new Ice();
+    Cure* cure = new Cure();
+    Character* character = new Character("character");
+ 
+    ice->use(*character);
+    cure->use(*character);
+
+    character->equip(ice);
+    character->equip(cure);
+
+    character->use(0, *character);
+    character->use(1, *character);
+
+    character->unequip(0);
+    character->unequip(1);
+
+    delete ice;
+    delete cure;
     return 0;
 }
