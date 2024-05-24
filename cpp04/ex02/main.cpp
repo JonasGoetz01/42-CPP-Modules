@@ -3,6 +3,8 @@
 
 int main()
 {
+
+    // AAnimal test;
     {
         const AAnimal* j = new Dog();
         const AAnimal* i = new Cat();
