@@ -1,40 +1,34 @@
 #include "Character.hpp"
 
-Character::Character()
+Character::Character(std::string name) : _name(name)
 {
+    for (int i = 0; i < 4; i++)
+        _inventory[i] = NULL;
 }
 
-Character::Character(const Character& other)
+Character::Character(Character const & ref)
 {
-    *this = other;
+    *this = ref;
 }
 
 Character::~Character()
 {
     for (int i = 0; i < 4; i++)
     {
-        if (_materias[i])
-            delete _materias[i];
+        if (_inventory[i])
+            delete _inventory[i];
     }
 }
 
-Character& Character::operator=(const Character& other)
+Character & Character::operator=(Character const & ref)
 {
-    _name = other._name;
     for (int i = 0; i < 4; i++)
     {
-        if (_materias[i])
-            delete _materias[i];
-        _materias[i] = other._materias[i]->clone();
+        if (_inventory[i])
+            delete _inventory[i];
+        _inventory[i] = ref._inventory[i]->clone();
     }
     return *this;
-}
-
-Character::Character(const std::string& name)
-{
-    _name = name;
-    for (int i = 0; i < 4; i++)
-        _materias[i] = nullptr;
 }
 
 std::string const & Character::getName() const
@@ -42,13 +36,13 @@ std::string const & Character::getName() const
     return _name;
 }
 
-void Character::equip(AMateria* m)
+void Character::equip(AMateria *m)
 {
     for (int i = 0; i < 4; i++)
     {
-        if (!_materias[i])
+        if (!_inventory[i])
         {
-            _materias[i] = m;
+            _inventory[i] = m;
             return;
         }
     }
@@ -56,21 +50,19 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-    if (idx < 0 || idx >= 4 || !_materias[idx])
-        return;
-    _materias[idx] = nullptr;
+    if (idx >= 0 && idx < 4 && _inventory[idx])
+        _inventory[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter& target)
+void Character::use(int idx, ICharacter & target)
 {
-    if (idx < 0 || idx >= 4 || !_materias[idx])
-        return;
-    _materias[idx]->use(target);
+    if (idx >= 0 && idx < 4 && _inventory[idx])
+        _inventory[idx]->use(target);
 }
 
-AMateria* Character::getMateriaFromInventory(int idx)
+AMateria *Character::getMateriaFromInventory(int idx)
 {
-    if (idx < 0 || idx >= 4)
-        return nullptr;
-    return _materias[idx];
+    if (idx >= 0 && idx < 4)
+        return _inventory[idx];
+    return NULL;
 }
