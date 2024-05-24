@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Materia.hpp"
+#include <iostream>
 
 class Cure : public AMateria
 {
@@ -12,7 +13,4 @@ class Cure : public AMateria
 		std::string const & getType() const;
 		Cure *clone() const;
 		void use(ICharacter& target);
-        
-	private:
-		std::string _type;
 };
