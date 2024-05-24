@@ -1,12 +1,10 @@
 #pragma once
 
 #include "Materia.hpp"
+#include <iostream>
 
 class Ice : public AMateria
 {
-    private:
-		std::string _type;
-
 	public:
 		Ice();
 		~Ice();
