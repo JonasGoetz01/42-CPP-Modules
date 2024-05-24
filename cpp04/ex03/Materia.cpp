@@ -1,31 +1,40 @@
 #include "Materia.hpp"
 
-AMateria::AMateria(std::string const & type) : _type(type)
+Materia::Materia()
 {
 }
 
-AMateria::AMateria(const AMateria& other) : _type(other._type)
+Materia::Materia(const Materia& other)
+{
+    *this = other;
+}
+
+Materia::~Materia()
 {
 }
 
-AMateria::~AMateria()
+Materia& Materia::operator=(const Materia& other)
 {
+    (void)other;
+    return *this;
 }
 
-AMateria& AMateria::operator=(const AMateria& other)
+const std::string& Materia::getType() const
 {
-    if (this == &other)
-        return (*this);
-    _type = other._type;
-    return (*this);
+    return _type;
 }
 
-std::string const & AMateria::getType() const
+void Materia::use(ICharacter& target)
 {
-    return (_type);
+    std::cout << "Materia used on " << target.getName() << std::endl;
 }
 
-void AMateria::use(ICharacter& target)
+Materia::Materia(const std::string& type)
 {
-	std::cout << "AMateria used on " << target.getName() << std::endl;
+    _type = type;
+}
+
+AMateria* Materia::clone() const
+{
+    return new Materia(_type);
 }
