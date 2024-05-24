@@ -1,18 +1,29 @@
 #include "Cure.hpp"
 
-Cure::Cure(): AMateria("cure") {}
-
-Cure::Cure(const Cure& other): AMateria(other) {}
-
-Cure::~Cure() {}
-
-Cure& Cure::operator=(const Cure& other)
+Cure::Cure() : AMateria("cure")
 {
-    AMateria::operator=(other);
+}
+
+Cure::~Cure()
+{
+}
+
+Cure::Cure(Cure const & ref) : AMateria(ref)
+{
+}
+
+Cure & Cure::operator=(Cure const & ref)
+{
+    AMateria::operator=(ref);
     return *this;
 }
 
-AMateria* Cure::clone() const
+std::string const & Cure::getType() const
+{
+    return _type;
+}
+
+Cure *Cure::clone() const
 {
     return new Cure(*this);
 }
@@ -20,4 +31,9 @@ AMateria* Cure::clone() const
 void Cure::use(ICharacter& target)
 {
     std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}
+
+AMateria *Cure::clone() const
+{
+    return new Cure(*this);
 }

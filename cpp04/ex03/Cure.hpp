@@ -2,13 +2,17 @@
 
 #include "Materia.hpp"
 
-class Cure: public AMateria
+class Cure : public AMateria
 {
-    public:
-        Cure();
-        Cure(const Cure& other);
-        virtual ~Cure();
-        Cure& operator=(const Cure& other);
-        virtual AMateria* clone() const;
-        virtual void use(ICharacter& target);
+	public:
+		Cure();
+		~Cure();
+		Cure(Cure const & ref);
+		Cure & operator=(Cure const & ref);
+		std::string const & getType() const;
+		Cure *clone() const;
+		void use(ICharacter& target);
+        
+	private:
+		std::string _type;
 };
